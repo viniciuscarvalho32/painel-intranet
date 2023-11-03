@@ -1,0 +1,54 @@
+.secfaterp {
+  display: flex;
+  background-color: #ececec;
+  min-width: 600px;
+}
+.comppai {
+  background-color: rgb(227, 226, 228);
+  height: 100%;
+}
+table {
+  border-spacing: 0;
+}
+.tabfat {
+  display: flex;
+  justify-content: center;
+}
+.tabfat th {
+  border-bottom: 1px solid #ececec;
+  padding: 1rem;
+}
+.tabfat td {
+  padding: 20px;
+  justify-content: center;
+  width: 500px;
+  border-bottom: 1px solid #ececec;
+}
+tbody tr:hover {
+  background-color: #afaeae;
+  cursor: pointer;
+  transition: 0.5s;
+  font-weight: bolder;
+}
+#idfat, #idcmp, #idvlr, #idsta {
+  text-align: center;
+}
+.loadingarea {
+  min-width: 320px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-20%, -100%);
+  z-index: 11;
+}
+.overlay {
+  background: #000;
+  height: 100vh;
+  left: 0;
+  opacity: 0.5;
+  position: fixed;
+  top: 10;
+  width: 100vw;
+  z-index: 10;
+}
+

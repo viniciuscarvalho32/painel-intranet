@@ -1,0 +1,47 @@
+<!--
+<mat-toolbar color="primary">
+  <span>My App</span>
+  <button mat-icon-button (click)="toggleSidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+  </mat-sidenav-content>
+-->
+<div class="login-container">
+  <form (ngSubmit)="fazerLogin()" #loginForm="ngForm">
+    <img src="/assets/logomacromaq.png">
+    <mat-form-field appearance="fill">
+      <mat-label>Usuário</mat-label>
+      <input matInput type="text" name="username" [(ngModel)]="usuario.email">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Senha</mat-label>
+      <input matInput type="password" name="password" [(ngModel)]="usuario.password">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.form.valid">Acessar</button>
+    <div class="error-msg" *ngIf="invalidLogin">Usuário ou Senha inválido</div>
+    <button mat-raised-button color="primary" [disabled]="!loginForm.form.valid" disabled="true">Cadastrar</button>
+    <div *ngIf="showLoading">
+      <div class="loadingarea">
+        <mat-spinner class="loading"></mat-spinner>
+      </div>
+      <div class="overlay"></div>
+    </div>
+  </form>
+</div>
+

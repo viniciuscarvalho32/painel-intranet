@@ -1,0 +1,44 @@
+<nav class="navigate" (scroll)="onscroll()" [ngClass]="navbarfixed?'fixed':'nofixed'">
+  <div class="logonav">
+    <div class="logomacro">
+      <a routerLink="/home"><img src="/assets/logomacromaq.png"></a>
+    </div>
+  </div>
+
+  <div class="menunav">
+    <div class="btnfat">
+      <button mat-button [matMenuTriggerFor]="fatura">Faturas</button>
+      <mat-menu #fatura="matMenu" xPosition="after">
+        <button mat-menu-item><a routerLink="/hcm/faturas">Plano de Saúde</a></button>
+        <button mat-menu-item><a routerLink="/erp/faturas-erp">Abastecimento</a></button>
+      </mat-menu>
+    </div>
+    <div class="btntra">
+      <button mat-button [matMenuTriggerFor]="transporte">Transporte</button>
+      <mat-menu #transporte="matMenu" xPosition="after">
+        <button mat-menu-item><a routerLink="/erp/fretes-erp">CT-e Recebimento</a></button>
+        <button mat-menu-item><a routerLink="/erp/cte">CTRC Emissão</a></button>
+      </mat-menu>
+    </div>
+  </div>
+  <div id="imglogoff" (click)="fazerLogOff()"><img src="assets/logoff.png"></div>
+
+  <!-- <div class="modulos">
+    <ul class="navigate-item">
+        <li><a routerLink="/hcm/faturas"><img src="/assets/hcmicon.png" id="hcmicon"></a></li>
+        <li (mouseover)="showsubmenu()" (mouseleave)="closemenu()"><img src="/assets/erpicon.png" id="erpicon">
+          <div *ngIf="submenu" class="submenu">
+            <ul>
+              <li id="fre"><a routerLink="/erp/fretes-erp">Fretes</a></li>
+              <li id="fat"><a routerLink="/erp/faturas-erp">Faturas</a></li>
+            </ul>
+          </div>
+        </li>
+        <div id="imglogoff" (click)="fazerLogOff()"><img src="assets/logoff.png"></div>
+    </ul>
+  </div> -->
+</nav>
+
+
+
+

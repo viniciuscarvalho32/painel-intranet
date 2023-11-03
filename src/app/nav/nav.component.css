@@ -1,0 +1,60 @@
+.fixed {
+  position: fixed;
+  width: 100%;
+  transition: 0.2s linear;
+  top: 0px;
+}
+.nofixed {
+  position: static;
+  transition: 0.2s linear;
+  top: -50px;
+}
+.navigate {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: rgb(5, 5, 5);
+  background-color: #ffffff;
+  /*box-shadow: 0px 3px 15px rgba(158, 158, 158, 0.486);*/
+  z-index: 11;
+  list-style: none;
+  height: 5rem;
+  border-bottom: 1px solid rgb(202, 202, 202);
+}
+.logonav {
+  display: flex;
+  align-items: left;
+  width: 70%;
+}
+.menunav {
+  display: flex;
+}
+.btntra, .btnfat {
+  padding: 0 2rem 0 2rem;
+}
+.modulos {
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: 400px;
+}
+.logomacro img {
+  width: 250px;
+  padding: 0px 10px 0 10px;
+}
+.logomacro img:hover {
+  border-radius: 10px;
+  box-shadow: 1px 4px 10px rgba(5, 5, 5, 0.532);
+  transition: .3s;
+}
+#imglogoff img {
+    width: 30px;
+    cursor: pointer;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+
+
+

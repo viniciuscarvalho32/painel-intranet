@@ -1,0 +1,18 @@
+<nav class="navigate" (scroll)="onscroll()" [ngClass]="navbarfixed?'fixed':'nofixed'">
+      <div class="logomacro">
+        <a routerLink="/"><img src="/assets/logomacromaq.png"></a>
+      </div>
+        <ul class="navigate-item">
+            <li><a routerLink="/hcm/faturas"><img src="/assets/hcmicon.png" id="hcmicon"></a></li>
+            <li (mouseover)="showsubmenu()" (mouseleave)="closemenu()"><img src="/assets/erpicon.png" id="erpicon">
+              <div *ngIf="submenu" class="submenu">
+                <ul>
+                  <li id="fre"><a routerLink="/erp/fretes-erp">Fretes</a></li>
+                  <li id="fat"><a routerLink="/erp/faturas-erp">Faturas</a></li>
+                </ul>
+              </div>
+            </li>
+
+        </ul>
+</nav>
+

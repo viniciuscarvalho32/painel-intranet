@@ -1,0 +1,51 @@
+<!--<app-messages></app-messages> -->
+<section class="section">
+  <div *ngIf="rateios.length !== 0" class="btnvalidar">
+    <form>
+      <div *ngIf="statusFat.length == 0">
+        <button mat-stroked-button (click)="validarRateio()">
+        Validar
+      </button>
+      </div>
+    </form>
+  </div>
+  <div class="nfatura">
+    <h2>Fatura: {{numFatura}}</h2>
+  </div>
+  <div *ngIf="showLoading">
+    <div class="loadingarea">
+      <mat-spinner class="loading"></mat-spinner>
+    </div>
+    <div class="overlay"></div>
+  </div>
+  <!--<input type="text" id="inpfat" placeholder="Número da Fatura"> -->
+  <!--<input type="text" id="btnfat" (click)="getFatura()" value="Buscar"> -->
+  <div>
+    <div class="tabresult" *ngIf="rateios.length > 0">
+      <table>
+        <thead>
+          <tr>
+            <th>Centro de Custo</th>
+            <th>Descrição CC</th>
+            <th>Percentual</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let rateio of rateios">
+          <tr>
+            <td id="fatccu">{{ rateio.codccu }}</td>
+            <td id="fatdes">{{ rateio.desrat }}</td>
+            <td id="fatper">{{ rateio.perrat }}</td>
+            <td id="fatvlr">{{ rateio.vlrrat }}</td>
+          </tr>
+        </tbody>
+        <tr *ngIf="rateios.length > 0" class="trTotal">
+          <td></td>
+          <td></td>
+          <td>Total</td>
+          <td>R$ &nbsp; {{ totalFat }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,17 @@
+<div class="message-area" *ngIf="messagesService.message">
+    <div [ngClass]="messagesService.boxmessageColor">
+      <div class="imglog">
+        <img ngSrc="{{messagesService.srcImageLog}}" width="80" height="80">
+      </div>
+      <div class="img-close">
+        <img src="/assets/close1.png" (click)="messagesService.close()">
+      </div>
+      <div class="msgLog">
+        {{messagesService.message}}
+      </div>
+    </div>
+  </div>
+  <div class="overlay"></div>
+
+
+  <!-- [ngClass]="messagesService.boxmessageColor"-->

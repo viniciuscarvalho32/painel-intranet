@@ -1,0 +1,88 @@
+.filtro {
+    justify-content: center;
+    width: 100%;
+    border-bottom: 1px solid grey;
+}
+.callfat {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+#inpfat {
+    padding: .5rem;
+    font-size: 18pt;
+}
+.loadingarea {
+  min-width: 320px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-20%, -100%);
+  z-index: 11;
+}
+.overlay {
+  background: #000;
+  height: 100vh;
+  left: 0;
+  opacity: 0.5;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 10;
+}
+.tabresult {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.tabresult th {
+    background-color: rgb(209, 209, 209);
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14pt;
+    border-radius: 2px;
+    box-shadow: 2px 8px 12px rgb(182, 182, 182);
+}
+.tabresult td {
+    padding: 10px;
+    font-size: 12pt;
+    justify-content: space-around;
+    width: 300px;
+    border-bottom: 1px solid rgba(212, 212, 212, 0.452);
+}
+#fatccu {
+    text-align: center;
+}
+#fatper, #fatvlr {
+    text-align: end;
+}
+.faturaform {
+    display: flex;
+}
+#btnfat {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.faturaform-full-width {
+    width: 300px;
+}
+.btnvalidar {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.btnvalidar button {
+    width: 200px;
+}
+.btnvalidar button:hover {
+    background-color: rgb(214, 247, 148);
+}
+.trTotal {
+    font-weight: bolder;
+    text-align: right;
+}
+.nfatura {
+  display: flex;
+  justify-content: center;
+}
+

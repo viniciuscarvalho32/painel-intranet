@@ -1,0 +1,19 @@
+.container {
+  min-width: 600px;
+  min-height: 600px;
+  z-index: 11;
+  background-color: rgb(252, 252, 252);
+  border-radius: 5px;
+  overflow: auto;
+}
+table {
+  width: 100%;
+}
+.overlay {
+  background: #000;
+  left: 0;
+  opacity: 0.5;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  }

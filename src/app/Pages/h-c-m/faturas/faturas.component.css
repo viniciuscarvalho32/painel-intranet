@@ -1,0 +1,58 @@
+.faturas {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 12pt;
+}
+.tabfat {
+  border-spacing: 0;
+}
+.tabfat th {
+  border-bottom: 1px solid #ececec;
+  padding: 1rem;
+}
+.tabfat td  {
+  padding: 20px;
+  justify-content: center;
+  width: 500px;
+  border-bottom: 1px solid rgba(180, 180, 180, 0.87);
+}
+tbody tr:hover {
+  background-color: #afaeae;
+  cursor: pointer;
+  transition: 0.5s;
+  font-weight: bolder;
+}
+#idfat, #idcmp, #idvlr, #idsta {
+  text-align: center;
+}
+.loadingarea {
+  min-width: 320px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-20%, -100%);
+  z-index: 11;
+  /*
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 1em;
+  */
+}
+.overlay {
+  background: #000;
+  height: 100vh;
+  left: 0;
+  opacity: 0.5;
+  position: fixed;
+  top: 10;
+  width: 100vw;
+  z-index: 10;
+}
+
+
+
+

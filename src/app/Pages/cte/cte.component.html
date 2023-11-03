@@ -1,0 +1,51 @@
+<div class="formfile">
+  <span>Importe os arquivos ou Faça a leitura das chaves para gerar o CT-e</span>
+  <app-form-file-fat (onSubmit)="createHandler($event)"></app-form-file-fat>
+  <div class="chaveCte">
+   <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="formCte" #formDir="ngForm">
+      <!--<form class="example-form" (submit)="onSubmit()"> -->
+        <mat-form-field class="example-full-width">
+          <mat-label>Chave CT-e</mat-label>
+          <textarea matInput placeholder="Preencha o número da Chave do CT-e" formControlName="chvCte" required></textarea>
+          <div *ngIf="formDir.submitted" class="validErr">
+            <p *ngIf="chvCte.errors?.['required']">
+              A Chave não pode ficar em branco
+            </p>
+          </div>
+        </mat-form-field>
+        <div class="btnfrete">
+         <button type="submit" [disabled]="formDir.invalid">Buscar</button>
+        </div>
+    </form>
+  </div>
+</div>
+<section class="seccteerp">
+  <div *ngIf="showLoading">
+    <div class="loadingarea">
+      <mat-spinner class="loading"></mat-spinner>
+    </div>
+    <div class="overlay"></div>
+  </div>
+
+  <div class="tabfat">
+  <table *ngIf="cteNfe.length > 0">
+    <thead>
+      <tr>
+        <th>Fatura</th>
+        <th>Competência</th>
+        <th>Valor</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+     <tr>
+        <td id="idfat"></td>
+        <td id="idcmp"></td>
+        <td id="idvlr"></td>
+        <td id="idsta"></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+</section>

@@ -1,0 +1,88 @@
+.fixed {
+  position: fixed;
+  width: 100%;
+  transition: 0.2s linear;
+  top: 0px;
+}
+.nofixed {
+  position: static;
+  transition: 0.2s linear;
+  top: -50px;
+}
+.navigate {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: rgb(5, 5, 5);
+    background-color: rgb(247, 246, 246);
+    box-shadow: 0px 3px 15px rgba(158, 158, 158, 0.486);
+    z-index: 11;
+    list-style: none;
+    height: 5rem;
+}
+.navigate .navigate-item {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+.navigate .navigate-item li {
+    font-size: 12pt;
+    width: 8rem;
+    text-align: center;
+    font-weight: bolder;
+    border-radius: 4px;
+    text-decoration: none;
+}
+.navigate li a {
+    text-decoration: none;
+    color: rgb(8, 8, 8);
+}
+.submenu {
+    display: flex;
+    position: fixed;
+    background-color: rgb(251, 252, 250);
+    height:fit-content;
+    border-radius: 5px;
+    top: 70px;
+    z-index: 12;
+    opacity: 1;
+    box-shadow: 0 8px 5px 0 rgba(158, 157, 157, 0.651);
+}
+.submenu ul li {
+    display: flex;
+    text-decoration: none;
+    list-style-type: none;
+    text-align: left;
+    padding: 10px;
+}
+.submenu li:hover {
+    background-color: rgb(248, 251, 252);
+}
+.submenu li:not(:last-child) {
+  border-bottom: 1px solid rgb(182, 181, 181);
+}
+#hcmicon, #erpicon {
+    width: 55px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+}
+#hcmicon:hover, #erpicon:hover {
+    transition: .5s;
+    box-shadow: 1px 4px 10px rgba(5, 5, 5, 0.532);
+}
+.logomacro img {
+    width: 250px;
+    padding: 0px 10px 0 10px;
+}
+.logomacro img:hover {
+    border-radius: 10px;
+    box-shadow: 1px 4px 10px rgba(5, 5, 5, 0.532);
+    transition: .3s;
+}
+#hcmicon {
+    height: 54px;
+}
+
+
+

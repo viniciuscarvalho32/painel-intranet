@@ -1,0 +1,29 @@
+<div class="formfile">
+  <!--<app-form-file-fat (onSubmit)="createHandler($event)"></app-form-file-fat>  COMENTADO TEMPORARIAMENTE -->
+</div>
+<section class="faturas">
+    <div *ngIf="showLoading">
+      <div class="loadingarea">
+        <mat-spinner class="loading"></mat-spinner>
+      </div>
+      <div class="overlay"></div>
+    </div>
+    <table class="tabfat" *ngIf="faturas.length">
+      <thead>
+        <tr>
+          <th>Fatura</th>
+          <th>Competência</th>
+          <th>Valor</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let fat of faturas">
+       <tr a [routerLink]="['/hcm/faturas/fatura/', fat.numfat]">
+          <td id="idfat">{{fat.numfat}}</td>
+          <td id="idcmp">{{fat.cmpemi}}</td>
+          <td id="idvlr">R$&nbsp;&nbsp;&nbsp;&nbsp;{{fat.vlrfat}}</td>
+          <td id="idsta">{{fat.stafat}}</td>
+        </tr>
+      </tbody>
+    </table>
+</section>

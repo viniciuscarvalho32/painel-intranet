@@ -1,0 +1,67 @@
+body {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+img {
+  padding: 20px;
+}
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  margin: 0 auto;
+  height: 100%;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+  border-radius: 5px;
+  border: 1px solid rgb(231, 231, 231);
+  padding: 1px 50px 5px 50px;
+  height: 450px;
+  background-color: #ffffff;
+}
+
+label {
+  margin-top: 10px;
+}
+
+input {
+  padding: 5px;
+  margin-top: 5px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px;
+  color: rgb(10, 10, 10);
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+}
+button:hover {
+  background-color: #4CAF50;
+}
+#error-msg {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+}
+.ng-star-inserted {
+  display: flex;
+  justify-content: center;
+}
+.loadingarea {
+  display: flex;
+  justify-content: center;
+  width: 40px;
+}
+mat-spinner {
+
+}

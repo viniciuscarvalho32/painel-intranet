@@ -1,0 +1,55 @@
+<div class="fretearea">
+  <div class="formcte">
+    <div class="btnCarregarFretes">
+      <button (click)="carregarFretes()">Carregar Fretes</button>
+    </div>
+
+    <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="formFrete" #formDir="ngForm">
+      <!--<form class="example-form" (submit)="onSubmit()"> -->
+        <mat-form-field class="example-full-width">
+          <mat-label>Chave CT-e</mat-label>
+          <textarea matInput placeholder="Preencha o número da Chave do CT-e" formControlName="chvCte" required></textarea>
+          <div *ngIf="formDir.submitted" class="validErr">
+            <p *ngIf="chvCte.errors?.['required']">
+              A Chave não pode ficar em branco
+            </p>
+          </div>
+        </mat-form-field>
+        <div class="btnfrete">
+         <button type="submit" [disabled]="formDir.invalid">Buscar</button>
+         <!--<button type="submit">Buscar</button>-->
+        </div>
+    </form>
+  </div>
+  <div *ngIf="showLoading">
+    <div class="loadingarea">
+      <mat-spinner class="loading"></mat-spinner>
+    </div>
+    <div class="overlay"></div>
+  </div>
+  <div class="areatable">
+    <table class="tabfrete" *ngIf="fretesList.length > 0">
+      <thead>
+        <th>Status</th>
+        <th>Filial</th>
+        <th>Número CTE</th>
+        <th>Nome Emissor</th>
+        <th>CNPJ</th>
+        <th>Data Emissão</th>
+        <th>Valor</th>
+      </thead>
+      <tbody *ngFor="let cte of fretesList">
+        <tr id="{{cte.chvNel}}">
+        <td id=idSit{{cte.sitNfc}}></td>
+        <td id="idFil">{{cte.sigFil}}</td>
+        <td id="idNfc">{{cte.numCte}}</td>
+        <td id="idFor">{{cte.nomEmi}}</td>
+        <td id="idCgc">{{cte.cgcFor}}</td>
+        <td id="idDat">{{cte.datEmi}}</td>
+        <td id="idVlr">{{cte.vlrCte}}</td>
+        <td id="idVal" *ngIf="cte.sitNfc === 0" (click)="validarCte(cte.chvNel)"><img src="/assets/check.png"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
