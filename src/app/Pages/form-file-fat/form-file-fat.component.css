@@ -1,4 +1,4 @@
-.formfile form {
+.formfile {
   display: flex;
   justify-content: center;
   background-color: rgb(141, 140, 140);
@@ -8,9 +8,16 @@
 input[type="file"] {
   display: none;
 }
-label {
+.filename {
   display: flex;
   justify-content: center;
+}
+.btnselectfile {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+label {
   padding: 10px 10px;
   width: 200px;
   background-color: #FFF;
@@ -20,11 +27,14 @@ label {
   color: #333;
   border-radius: 5px;
 }
-.btnsendfile input {
+.btnsendfile {
   display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.btnsendfile input {
   padding: 10px;
   width: 4rem;
-  margin-left: 1rem;
   text-align: center;
   font-size: 12pt;
   border-radius: 5px;
@@ -41,6 +51,9 @@ label:hover {
   color: #FFF;
   cursor: pointer;
   transition: .2s;
+}
+span {
+  font-weight: bolder;
 }
 
 

@@ -5,7 +5,7 @@
   padding: .5rem;
   font-size: 18pt;
 }
-.loadingarea {
+/* .loadingarea {
 min-width: 320px;
 position: fixed;
 left: 50%;
@@ -22,7 +22,7 @@ position: fixed;
 top: 0;
 width: 100vw;
 z-index: 10;
-}
+} */
 .tabresult {
   display: flex;
   justify-content: center;

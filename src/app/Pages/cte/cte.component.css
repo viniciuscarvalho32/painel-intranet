@@ -62,7 +62,7 @@ span {
 #idVlr {
   text-align: right;
 }
-#idSit0 {
+/* #idSit0 {
   background-image: url('/assets/status.png');
   background-size: 35px;
   background-repeat: no-repeat;
@@ -79,13 +79,13 @@ span {
   background-size: 35px;
   background-repeat: no-repeat;
   background-position: center;
-}
-.loadingarea {
-  min-width: 320px;
+} */
+/* .loadingarea {
+  display: flex;
+  justify-content: center;
   position: fixed;
   left: 50%;
-  top: 50%;
-  transform: translate(-20%, -100%);
+  transform: translate(-50%, 0);
   z-index: 11;
 }
 .overlay {
@@ -97,7 +97,7 @@ span {
   top: 0;
   width: 100vw;
   z-index: 10;
-}
+} */
 .btnCarregarFretes {
   margin-top: 1rem;
   justify-content: flex-start;
@@ -131,6 +131,54 @@ span {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
+}
+.tabcte {
+  margin-top: 2rem;
+}
+.tabchave {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+thead th {
+  background-color:rgb(220, 220, 220);
+  padding: .5rem 1rem .5rem 1rem;
+  border-radius: .3rem;
+  text-align: center;
+}
+.tabchave td {
+  border-bottom: 1px solid rgb(230, 230, 230);
+}
+#idsel input {
+  width: 50px;
+  height: 20px;
+  cursor: pointer;
+}
+.btnsub {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2rem;
+}
+.btnsub button {
+  width: 7rem;
+  height: 2.3rem;
+  cursor: pointer;
+}
+.btnsub button:hover {
+  background-color: cornflowerblue;
+  transition: .3s;
+  cursor: pointer;
+  color: white;
+  border: none;
+  border-radius: .3rem;
+}
+.tipser select {
+  padding: .5rem;
+  border-radius: .3rem;
+}
+mat-form-field {
+  width: 300px;
 }
 
 

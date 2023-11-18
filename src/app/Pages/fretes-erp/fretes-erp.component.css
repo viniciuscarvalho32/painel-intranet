@@ -74,7 +74,7 @@
   background-repeat: no-repeat;
   background-position: center;
 }
-.loadingarea {
+/* .loadingarea {
   min-width: 320px;
   position: fixed;
   left: 50%;
@@ -91,7 +91,7 @@
   top: 0;
   width: 100vw;
   z-index: 10;
-}
+} */
 .btnCarregarFretes {
   margin-top: 1rem;
   justify-content: flex-start;

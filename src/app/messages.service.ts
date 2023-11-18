@@ -14,11 +14,11 @@ export class MessagesService {
     this.message = message;
     this.boxmessageColor = color;
     this.srcImageLog = srcImage;
-/*
-      setInterval(() => {
-        this.close();
-      }, 4000)
-*/
+
+      // setInterval(() => {
+      //   this.close();
+      // }, 2000)
+
   }
   close() {
     this.message = "";

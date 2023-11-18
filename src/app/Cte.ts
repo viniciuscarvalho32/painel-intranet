@@ -1,6 +1,5 @@
 export interface Cte {
-  numfat: string,
-  cmpemi: Date,
-  vlrfat: number,
-  stafat: string
+  numnfv: number;
+  chvnel: string;
+  isselected: boolean;
 }

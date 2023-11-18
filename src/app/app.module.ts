@@ -32,6 +32,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { CteComponent } from './Pages/cte/cte.component';
 import { RateioCcComponent } from './Pages/rateio-cc/rateio-cc.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatSidenavModule,
     CommonModule,
     NgOptimizedImage,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

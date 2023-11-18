@@ -3,3 +3,26 @@
 
 html, body { height: 100%;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.loadingarea {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -0%);
+  z-index: 11;
+}
+.overlay {
+  background: #000;
+  height: 100vh;
+  left: 0;
+  opacity: 0.5;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 10;
+}
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #f5e42d;
+  }

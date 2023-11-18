@@ -17,4 +17,9 @@ export class CteService {
     return this.http.post<Response<Cte[]>>(`${this.urlCte}/erp/cte`,formData)
   }
 
+  setCtrc(chavesCtrc: any): Observable<Response<Cte[]>> {
+    //console.log(chavesCtrc)
+    return this.http.post<Response<Cte[]>>(`${this.urlCte}/erp/cte/chaves`, chavesCtrc)
+  }
+
 }

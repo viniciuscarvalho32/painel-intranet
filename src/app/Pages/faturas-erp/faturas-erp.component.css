@@ -33,7 +33,7 @@ tbody tr:hover {
 #idfat, #idcmp, #idvlr, #idsta {
   text-align: center;
 }
-.loadingarea {
+/* .loadingarea {
   min-width: 320px;
   position: fixed;
   left: 50%;
@@ -50,5 +50,5 @@ tbody tr:hover {
   top: 10;
   width: 100vw;
   z-index: 10;
-}
+} */
 
