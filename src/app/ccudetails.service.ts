@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CcuDetails } from './CcuDetails';
 import { Response } from './Response';
+import { DetailEmail } from './DetailEmail';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +19,10 @@ export class CcudetailsService {
   }
   close() {
     console.log("Fechando")
+  }
+  getRateioColaborador(rateioColab: DetailEmail): Observable<Response<CcuDetails[]>> {
+    const numFat = rateioColab.numFat;
+    const email = rateioColab.email;
+    return this.http.get<Response<CcuDetails[]>>(`${this.urlApi}/erp/faturas-erp/fatura/email/${numFat}/${email}`);
   }
 }

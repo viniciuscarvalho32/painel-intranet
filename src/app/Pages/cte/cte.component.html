@@ -1,6 +1,11 @@
+<!-- <app-nav></app-nav> -->
 <div class="formfile">
-  <span>Importe os arquivos ou Faça a leitura das chaves para gerar o CT-e</span>
+  <!-- <span>Importe os arquivos ou Faça a leitura das chaves para gerar o CT-e</span> -->
   <app-form-file-fat (onSubmit)="createHandler($event)"></app-form-file-fat>
+  <div class="btnload" *ngIf="cteNfe.length == 0">
+    <input type="button" id="btnload" name="btnload" value="Buscar XML Pendentes" (click)="reloadXml()">
+  </div>
+
   <!-- <div class="chaveCte">
    <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="formCte" #formDir="ngForm">
         <mat-form-field class="example-full-width">
@@ -18,6 +23,7 @@
     </form>
   </div> -->
 </div>
+
 <section class="seccteerp">
   <div *ngIf="showLoading">
     <div class="loadingarea">
@@ -29,16 +35,17 @@
   <div class="tabchave">
   <!-- <div><h2>Número CTRC:</h2></div> -->
   <form (ngSubmit)="onSubmit($event)">
+    <div class="docanterior" *ngIf="cteNfe.length > 0">
     <div class="tipser" *ngIf="cteNfe.length > 0">
       <!-- <mat-form-field> -->
       <!-- <mat-label>Tipo de Frete</mat-label> -->
       <select name="tipser" class="tipser">
         <option class="tipseritem" *ngFor="let type of types" [value]="type.id">{{type.viewValue}}</option>
         <mat-option [value]="0">0-Normal</mat-option>
-        <mat-option [value]="1">1-Subcontratação</mat-option>
+        <mat-option [value]="1" selected="selected">1-Subcontratação</mat-option>
         <mat-option [value]="2">2-Redespacho</mat-option>
         <mat-option [value]="3">3-Redespacho Intermediário</mat-option>
-        <mat-option [value]="4">4-Serviço Vinculado a Multimodal</mat-option> -->
+        <mat-option [value]="4">4-Serviço Vinculado a Multimodal</mat-option>
       </select>
       <!-- <mat-form-field>
         <mat-label>Favorite food</mat-label>
@@ -50,8 +57,20 @@
       </mat-form-field> -->
       <!-- </mat-form-field> -->
     </div>
-    <div class="tabcte">
-    <table *ngIf="cteNfe.length > 0">
+    <div class="docant" *ngIf="cteNfe.length > 0">
+
+      <div class="imgbtn" (click)="addFormDocAnt()">
+        <img src="/assets/adddocant.png">
+      </div>
+      <p class="txtdocant">Adicionar Documento Anterior</p>
+
+    </div>
+    <div class="docantform">
+      <app-form-docant *ngIf="formDocAnt"></app-form-docant>
+    </div>
+  </div>
+    <div class="tabcte" *ngIf="cteNfe.length > 0">
+    <table>
       <thead>
         <tr>
           <th id="idsel" class="thead">
@@ -61,22 +80,36 @@
             [(ngModel)]="parentSelector" [ngModelOptions]="{standalone: true}"
             [value]="-1">
           </th>
+          <th>Doc. Anterior</th>
           <th>Nota Fiscal</th>
           <th>Chave</th>
+          <th>Emitente</th>
+          <th>Destinatário</th>
         </tr>
       </thead>
       <tbody>
       <tr *ngFor="let chave of cteNfe">
-          <th id="idsel">
+          <td id="idsel">
             <input
               type="checkbox"
               name={{chave.chvnel}}
               (change)="onChange($event)"
               [checked]="chave.isselected"
               [value]="chave.chvnel">
-          </th>
+          </td>
+          <td id="iddoc">
+            <input
+              type="radio"
+              name="docselected"
+              (change)="onChg($event)"
+              [checked]="chave.docselected"
+              [value]="chave.chvnel">
+          </td>
           <td id="idnfv">{{chave.numnfv}}</td>
           <td id="idchv">{{chave.chvnel}}</td>
+          <td id="idemit">{{chave.nomeEmit}}</td>
+          <td id="iddest">{{chave.nomeDest}}</td>
+          <td id="delchv" (click)="deleteXml(chave.chvnel)"><img src="/assets/erro.png"></td>
         </tr>
       </tbody>
     </table>

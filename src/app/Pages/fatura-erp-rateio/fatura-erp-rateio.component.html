@@ -1,5 +1,10 @@
-<!-- <app-messages></app-messages> -->
-<!-- <app-rateio-cc></app-rateio-cc> -->
+<div *ngIf="showLoading">
+  <div class="loadingarea">
+    <mat-spinner class="loading"></mat-spinner>
+  </div>
+  <div class="overlay"></div>
+</div>
+
 <section class="section">
   <div *ngIf="rateios.length !== 0" class="btnvalidar">
     <form>
@@ -12,17 +17,31 @@
   </div>
   <div class="nfatura">
     <h2>Fatura: {{numFatura}}</h2>
-  </div>
-  <div *ngIf="showLoading">
-    <div class="loadingarea">
-      <mat-spinner class="loading"></mat-spinner>
+    <div class="formEnviarEmail">
+      <div>
+        <span>Enviar e-mail</span>
+      </div>
+      <div>
+        <form (ngSubmit)="submit()" [formGroup]="formEmail" formDir="ngForm">
+          <input id="email" type="email" placeholder="Digite o e-mail" formControlName="email">
+          <input id="btnEnviar" type="submit" value="Enviar" name="enviar">
+        </form>
+      </div>
     </div>
-    <div class="overlay"></div>
   </div>
+
+
   <!--<input type="text" id="inpfat" placeholder="Número da Fatura"> -->
   <!--<input type="text" id="btnfat" (click)="getFatura()" value="Buscar"> -->
-  <div>
-    <div class="tabresult" *ngIf="rateios.length > 0">
+  <!-- <div class="gerRelatorio" *ngIf="rateios.length > 0">
+    <div>
+      <button (click)="gerRelatorio('707238')">Gerar Relatório Rateio</button>
+    </div>
+  </div> -->
+
+  <div *ngIf="rateios.length > 0">
+
+    <div class="tabresult">
       <table>
           <tr class="tablecab">
             <td>Centro de Custo</td>
@@ -31,7 +50,8 @@
             <td>Valor</td>
           </tr>
         <tbody *ngFor="let rateio of rateios">
-          <tr class="trDetail" (click)="showRateioDetails(numFatura, rateio.codccu)">
+          <!-- <tr class="trDetail" (click)="showRateioDetails(numFatura, rateio.codccu)"> -->
+            <tr class="trDetail">
             <td id="fatccu">{{ rateio.codccu }}</td>
             <td id="fatdes">{{ rateio.desrat }}</td>
             <td id="fatper">{{ rateio.perrat }}</td>
@@ -45,6 +65,12 @@
           <td>{{ totalFat }}</td>
         </tr>
       </table>
+    </div>
+    <div class="paginator" *ngIf="rateios.length > 0">
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                  showFirstLastButtons
+                  aria-label="Select page of periodic elements">
+      </mat-paginator>
     </div>
   </div>
 </section>

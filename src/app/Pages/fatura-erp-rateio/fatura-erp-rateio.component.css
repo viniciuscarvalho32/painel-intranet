@@ -26,14 +26,19 @@ z-index: 10;
 .tabresult {
   display: flex;
   justify-content: center;
+  margin: 0 auto;
+  background-color: rgb(253, 251, 251);
+  box-shadow: 3px 8px 10px rgba(182, 182, 182, 0.678);
+  border-radius: 5px;
+  width: 900px;
 }
 .tablecab {
-  background-color: rgb(209, 209, 209);
   padding: 10px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14pt;
   border-radius: 2px;
-  box-shadow: 2px 8px 12px rgb(182, 182, 182);
+  font-weight: bolder;
+  text-align: center;
 }
 .tabresult td {
   padding: 10px;
@@ -41,6 +46,7 @@ z-index: 10;
   justify-content: space-around;
   width: 300px;
   border-bottom: 1px solid rgba(212, 212, 212, 0.452);
+  text-align: center;
 }
 #fatccu {
   text-align: center;
@@ -74,9 +80,30 @@ z-index: 10;
   text-align: right;
 }
 .nfatura {
-display: flex;
-justify-content: center;
+  margin: 0 auto;
+  padding: 10px;
+  flex-direction: column;
 }
 .trDetail {
   cursor: pointer;
 }
+#email {
+  width: 300px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+#btnEnviar {
+  padding: 10px;
+  width: 80px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 3px;
+}
+#btnEnviar:hover {
+  background-color: rgb(96, 174, 253);
+  cursor: pointer;
+  color: white;
+}
+
+

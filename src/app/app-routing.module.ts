@@ -1,3 +1,4 @@
+import { PowerBiComponent } from './Pages/power-bi/power-bi.component';
 import { HomeComponent } from './Pages/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -11,6 +12,7 @@ import { UserComponent } from './Pages/cadastros/user/user.component';
 import { NavComponent } from './nav/nav.component';
 import { CteComponent } from './Pages/cte/cte.component';
 import { RateioCcComponent } from './Pages/rateio-cc/rateio-cc.component';
+import { ProtectedComponent } from './Pages/protected/protected.component';
 
 const routes: Routes = [
   {path: 'hcm/faturas', component: FaturasComponent},
@@ -19,11 +21,13 @@ const routes: Routes = [
   {path: 'erp/faturas-erp', component: FaturasErpComponent},
   {path: 'erp/faturas-erp/fatura/:fat', component: FaturaErpRateioComponent},
   {path: 'import/faturas/:type', component: FaturasErpComponent},
-  {path: '', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'cadUsuario', component: UserComponent},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: 'sign-up', component: UserComponent},
   {path: 'erp/cte', component: CteComponent},
-  {path: 'erp/faturas-erp/fatura/rateiocc/:fat/:ccu', component: RateioCcComponent}
+  {path: 'powerbi', component: PowerBiComponent},
+  {path: 'api/protegida', component: ProtectedComponent}
 ];
 
 @NgModule({

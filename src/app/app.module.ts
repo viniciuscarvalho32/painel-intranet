@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { PowerBiComponent } from './Pages/power-bi/power-bi.component';
+import { Input, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,8 +8,7 @@ import { HeaderComponent } from './header_inativo/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
 import { HcmComponent } from './Pages/hcm/hcm.component';
-import { ErpComponent } from './Pages/erp/erp.component';
-import {MatTableModule} from '@angular/material/table';
+import {MatTableModule, MatTableDataSource} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
@@ -33,7 +33,10 @@ import { CteComponent } from './Pages/cte/cte.component';
 import { RateioCcComponent } from './Pages/rateio-cc/rateio-cc.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
-
+import { FormDocantComponent } from './form-docant/form-docant.component';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import { RelatorioRateioComponent } from './Pages/relatorio-rateio/relatorio-rateio.component';
+import { ProtectedComponent } from './Pages/protected/protected.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,11 @@ import {MatSelectModule} from '@angular/material/select';
     UserComponent,
     CteComponent,
     RateioCcComponent,
-    NavComponent
+    NavComponent,
+    FormDocantComponent,
+    PowerBiComponent,
+    RelatorioRateioComponent,
+    ProtectedComponent
   ],
   imports: [
     BrowserModule,
@@ -72,9 +79,11 @@ import {MatSelectModule} from '@angular/material/select';
     CommonModule,
     NgOptimizedImage,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    MatPaginatorModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

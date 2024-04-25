@@ -1,5 +1,5 @@
 import { MessagesComponent } from './../../messages/messages.component';
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { FormControl, FormControlName, FormGroup } from '@angular/forms';
 import { Fatura } from 'src/app/Fatura';
 import { FaturasService } from 'src/app/faturas.service';
@@ -7,7 +7,8 @@ import { ArquivoFatura } from 'src/app/ArquivoFatura';
 import { MessagesService } from 'src/app/messages.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Router, createUrlTreeFromSnapshot } from '@angular/router';
-
+import { Subject } from 'rxjs';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -27,12 +28,28 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
   {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
 ];
+// @Injectable()
+// export class MyCustomPaginatorIntl implements MatPaginatorIntl {
+//   changes = new Subject<void>();
 
+//   itemsPerPageLabel = `Items per page`;
+//   nextPageLabel = 'Next page';
+//   previousPageLabel = 'Previous page';
+//   firstPageLabel = 'First page';
+//   lastPageLabel = 'Last page';
+//   getRangeLabel(page: number, pageSize: number, length: number): string {
+//     if (length === 0) {
+//       return `Page 1 of 1`;
+//     }
+//     const amountPages = Math.ceil(length / pageSize);
+//     return `Page ${page + 1} of ${amountPages}`;
+//   }
+// }
 
 @Component({
   selector: 'app-faturas-erp',
   templateUrl: './faturas-erp.component.html',
-  styleUrls: ['./faturas-erp.component.css']
+  styleUrls: ['./faturas-erp.component.css'],
 })
 export class FaturasErpComponent {
 
@@ -64,15 +81,6 @@ export class FaturasErpComponent {
   //   }
   //   return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   // }
-
-
-
-
-
-
-
-
-
 
   faturas: any[] = [];
   showLoading: boolean = false;
@@ -110,16 +118,26 @@ export class FaturasErpComponent {
             this.srcImgLog = '/assets/check.png';
             //this.messages.callMsg(items.message!, this.boxmessageColor)
             this.messages.callMsg("Fatura gravada com sucesso!", this.boxmessageColor, this.srcImgLog);
-            this.router.navigate(['/erp/faturas-erp'])
+            this.router.navigate(['/erp/faturas-erp']);
+            setTimeout(() => {
+              this.messages.close();
+            }, 2000)
         } else {
             //console.log(items.message)
             this.showLoading = false;
             this.boxmessageColor = 'red';
             this.srcImgLog = '/assets/erro.png';
             this.messages.callMsg(items.message, this.boxmessageColor, this.srcImgLog);
-            this.router.navigate(['/erp/faturas-erp'])
+            this.router.navigate(['/erp/faturas-erp']);
+            setTimeout(() => {
+               this.messages.close();
+            }, 5000)
         }
       }
     })
+  }
+  async deleteFile(numFat: String) {
+    //await this.faturaService
+    console.log("Clicado " + numFat);
   }
 }

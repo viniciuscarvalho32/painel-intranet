@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  background-color: rgb(238, 238, 238);
+  width: 80%;
+  height: 60%;
+  margin: 0 auto;
+  margin-top: 50px;
+  border-radius: 20px;
+  padding: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.img-area img {
+  width: 200px;
+  padding: 20px;
+}
+.img-area:hover {
+  box-shadow: 1px 1px 10px 5px rgba(215, 214, 214, 0.868);
+  border-radius: 10px;
+  cursor: pointer;
+}
+span {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  font-size: 16pt;
+}

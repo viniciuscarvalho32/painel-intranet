@@ -7,16 +7,21 @@
 }
 .tabfat {
   border-spacing: 0;
+  margin-top: 10px;
+  background-color: rgb(253, 251, 251);
+  box-shadow: 3px 8px 10px rgba(182, 182, 182, 0.678);
+  border-radius: 5px;
+  width: 800px;
 }
 .tabfat th {
-  border-bottom: 1px solid #ececec;
+  border-bottom: 1px solid #d5d5d5;
   padding: 1rem;
 }
 .tabfat td  {
   padding: 20px;
   justify-content: center;
   width: 500px;
-  border-bottom: 1px solid rgba(180, 180, 180, 0.87);
+  border-bottom: 1px solid rgba(238, 238, 238, 0.87);
 }
 tbody tr:hover {
   background-color: #afaeae;

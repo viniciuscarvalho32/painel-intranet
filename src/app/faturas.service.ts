@@ -67,4 +67,8 @@ export class FaturasService {
     return this.http.post<Response<Faturas[]>>(`${this.urlFatura}/erp/faturas-erp`,formData)
   }
 
+  deleteFile(numFatura: String): Observable<Response<Faturas[]>> {
+    return this.http.post<Response<Faturas[]>>(`${this.urlFatura}/erp/faturas-erp/delete`,numFatura)
+  }
+
 }

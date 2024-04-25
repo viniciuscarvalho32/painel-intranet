@@ -13,7 +13,6 @@ export class MessagesComponent {
   constructor(public messagesService: MessagesService) { }
 
     onInit() {
-      //this.boxmessageColor = this.messagesService.boxmessageColor;
-      //console.log("boxMsg color: " + this.boxmessageColor);
+
     }
  }

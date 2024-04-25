@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FaturasService } from 'src/app/faturas.service';
 import {FormControl, Validators, ReactiveFormsModule, FormsModule, FormGroup} from '@angular/forms';
-import { ActivatedRoute, Router, createUrlTreeFromSnapshot } from '@angular/router';
+import { ActivatedRoute, Router, TitleStrategy, createUrlTreeFromSnapshot } from '@angular/router';
 import { Fatura } from 'src/app/Fatura';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
@@ -51,33 +51,37 @@ export class HcmComponent {
       numFat: this.numFatura,
       type: "planosaude"
     }
-    this.faturas.getRateio(paramGetRateio).subscribe((items) => {
-      const rat = items.data;
+    this.faturas.getRateio(paramGetRateio).subscribe({
 
-      if (items.data) {
+      next: (items) => {
 
-        this.showLoading = false;
+        const rat = items.data;
+        if (items.data) {
+            this.showLoading = false;
+            this.statusFat = rat.filter((sta => sta.status == "A"));
+            rat.filter((sta) => {
+               if (sta.status == "A") {
+                  this.boxmessageColor = 'green';
+                  this.srcImageLog = '/assets/check.png';
+                  this.messagesService.callMsg('Rateio já foi atualizado!', this.boxmessageColor, this.srcImageLog);
+                  setTimeout(() => {
+                    this.messagesService.close();
+                  }, 2000)
+                }
+            });
+        }
+        this.rateios = rat;
 
-        this.statusFat = rat.filter((sta => sta.status == "A"));
-
-        rat.filter((sta) => {
-           if (sta.status == "A") {
-              this.boxmessageColor = 'green';
-              this.srcImageLog = '/assets/check.png';
-              this.messagesService.callMsg('Rateio já foi atualizado!', this.boxmessageColor, this.srcImageLog);
-           }
-        });
-      }
-      //this.totalFat = converteVlr.reduce((accumulate, current) => accumulate = accumulate + current)
-      //console.log(this.totalFat)
-      this.rateios = rat;
-
-      if (items.message) {
+        if (items.message) {
           this.msgRet = items.message;
           this.boxmessageColor = 'green';
           this.srcImageLog = '/assets/check.png';
           this.messagesService.callMsg(this.msgRet, this.boxmessageColor , this.srcImageLog);
+          setTimeout(() => {
+            this.messagesService.close();
+          }, 2000)
           this.router.navigate(['/'])
+        }
       }
     })
   }
@@ -130,7 +134,11 @@ export class HcmComponent {
         this.showLoading = false;
         this.boxmessageColor = 'green';
         this.srcImageLog = '/assets/check.png';
-        this.messagesService.callMsg('Rateio Atualizado Com Sucesso!', this.boxmessageColor, this.srcImageLog);
+        this.messagesService.callMsg(items.message!, this.boxmessageColor, this.srcImageLog);
+        //this.messagesService.callMsg('Rateio Atualizado Com Sucesso!', this.boxmessageColor, this.srcImageLog);
+        setTimeout(() => {
+          this.messagesService.close();
+        }, 2000)
         this.router.navigate(['/hcm/faturas'])
       }
     });

@@ -1,4 +1,6 @@
- <section class="container mat-elevation-z8" tabindex="0">
+<!-- <app-nav></app-nav> -->
+<section class="container mat-elevation-z8" tabindex="0">
+
     <table mat-table [dataSource]="dataSource">
 
       <ng-container matColumnDef="numcad">
@@ -23,6 +25,10 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <div class="overlay"></div>
     </table>
 </section>
-<div class="overlay"></div>
+
+
+
+

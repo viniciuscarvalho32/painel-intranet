@@ -27,6 +27,8 @@ export class CteComponent {
   router: any;
   parentSelector: boolean = false;
   public listChvNelCtrc: any[] = []
+  public listDocSelected: string[] = [];
+  public formDocAnt: boolean = false;
 
   types: TipSer[] = [
     {id: 0, viewValue: 'Normal'},
@@ -43,13 +45,39 @@ export class CteComponent {
   onInit() {
 
   }
-  // formCte = new FormGroup({
-  //   chvCte: new FormControl(''),
-  // });
 
-  // get chvCte() {
-  //   return this.formCte.get("chvCte")!;
-  // }
+ async reloadXml() {
+    this.showLoading = true;
+    await this.cte.loadXml().subscribe({
+      next: (items) => {
+
+        if (!items.message) {
+            this.showLoading = false;
+            this.cteNfe = items.data;
+            this.boxmessageColor = 'green';
+            this.srcImgLog = '/assets/check.png';
+            setTimeout(() => {
+              this.messages.close();
+            }, 3000)
+            //this.messages.callMsg(items.message!, this.boxmessageColor)
+            //this.messages.callMsg("Chave relacionada com sucesso!", this.boxmessageColor, this.srcImgLog);
+            //this.router.navigate(['/erp/faturas-erp'])
+        } else {
+            this.showLoading = false;
+            this.boxmessageColor = 'green';
+            this.srcImgLog = '/assets/check.png';
+            this.messages.callMsg(items.message!, this.boxmessageColor, this.srcImgLog)
+            setTimeout(() => {
+              this.messages.close();
+            }, 3000)
+            //this.messages.callMsg("Chave relacionada com sucesso!", this.boxmessageColor, this.srcImgLog);
+            //this.router.navigate(['/erp/faturas-erp'])
+        }
+      }
+    })
+  }
+
+
   formCtrc = new FormGroup({
     tipSer: new FormControl('')
   })
@@ -57,14 +85,11 @@ export class CteComponent {
     return this.formCtrc.get('tipSer')!;
   }
 
-
-
   async createHandler(notas: any) {
     const formData = new FormData();
     this.showLoading = true;
     formData.append("txtFile", notas.txtFile)
     formData.append("type", "combustivel")
-    //console.log(formData)
 
     await this.cte.readFile(formData).subscribe({
       next: (items) => {
@@ -74,23 +99,32 @@ export class CteComponent {
             this.cteNfe = items.data;
             this.boxmessageColor = 'green';
             this.srcImgLog = '/assets/check.png';
+            setTimeout(() => {
+              this.messages.close();
+            }, 3000)
             //this.messages.callMsg(items.message!, this.boxmessageColor)
             //this.messages.callMsg("Chave relacionada com sucesso!", this.boxmessageColor, this.srcImgLog);
             //this.router.navigate(['/erp/faturas-erp'])
-            formData.delete("txtFile")
+
         } else {
             //console.log(items.message)
             this.showLoading = false;
             this.boxmessageColor = 'red';
-            this.srcImgLog = '/assets/erro.png';
+            this.srcImgLog = '/assets/erros.png';
             this.messages.callMsg(items.message, this.boxmessageColor, this.srcImgLog);
+            setTimeout(() => {
+              this.messages.close();
+            }, 3000)
             //this.router.navigate(['/erp/faturas-erp'])
         }
+        formData.delete;
       }
     })
   }
 
-
+  addFormDocAnt() {
+    this.formDocAnt = true;
+  }
 
   onChange($event:any) {
     const isChecked = $event.target.checked;
@@ -111,8 +145,13 @@ export class CteComponent {
       return chave;
     });
   }
+
+  onChg($event:any) {
+    const docValue = $event.target.value;
+    return this.listDocSelected.push(docValue)
+  }
   public chvSelected = 0;
-  async onSubmit($event: any) {
+  async onSubmit($event:any) {
     this.cteNfe.map((chvsel) => {
       if (chvsel.isselected == false) {
         this.chvSelected += 1;
@@ -120,24 +159,43 @@ export class CteComponent {
       }
     })
     if (this.chvSelected == this.cteNfe.length) {
-      //console.log(`Comparando: ${this.chvSelected}`)
-      //console.log(`Comparando Length: ${this.cteNfe.length}`)
+      // console.log(`Comparando: ${this.chvSelected}`)
+      // console.log(`Comparando Length: ${this.cteNfe.length}`)
       this.showLoading = false;
       this.boxmessageColor = 'red';
-      this.srcImgLog = '/assets/erro.png';
+      this.srcImgLog = '/assets/erros.png';
       this.messages.callMsg("Nenhuma Chave foi selecionada!", this.boxmessageColor, this.srcImgLog);
+      /*
+      setTimeout(() => {
+        this.messages.close();
+      }, 2000)
       this.chvSelected = 0;
+      */
     } else {
-      this.showLoading = true;
       const tipSer = $event.target.tipser;
       const valueTipSer = tipSer.value;
-      
-      this.cteNfe.filter((selected) => selected.isselected == true).map((newArray) => {
-        return this.listChvNelCtrc.push(newArray)
-      })
-      this.listChvNelCtrc.push(valueTipSer);
-      const newListObs = [...this.listChvNelCtrc];
-      await this.cte.setCtrc(newListObs).subscribe({
+
+      if ((valueTipSer == "1") && (this.listDocSelected.length == 0)) {
+        //console.log(valueTipSer)
+        this.showLoading = false;
+        this.boxmessageColor = 'red';
+        this.srcImgLog = '/assets/erros.png';
+        this.messages.callMsg("Documento Anterior não foi selecionado!", this.boxmessageColor, this.srcImgLog);
+        /*
+        setTimeout(() => {
+          this.messages.close();
+        }, 2000)
+        */
+      } else {
+        this.showLoading = true;
+        this.cteNfe.filter((selected) => selected.isselected == true).map((newArray) => {
+          return this.listChvNelCtrc.push(newArray)
+        })
+        this.listChvNelCtrc.push(valueTipSer);
+        this.listChvNelCtrc.push(this.listDocSelected);
+
+        const newListObs = [...this.listChvNelCtrc];
+        await this.cte.setCtrc(newListObs).subscribe({
          next: (items) => {
             if (!items.message) {
               this.showLoading = false;
@@ -146,18 +204,43 @@ export class CteComponent {
               this.boxmessageColor = 'green';
               this.srcImgLog = '/assets/check.png';
               this.messages.callMsg(msgCtrc, this.boxmessageColor, this.srcImgLog);
+
+              setTimeout(() => {
+                this.messages.close();
+              }, 2000)
+
               this.listChvNelCtrc.length = 0;
               this.cteNfe.length = 0;
             } else {
               this.showLoading = false;
               this.boxmessageColor = 'red';
-              this.srcImgLog = '/assets/erro.png';
+              this.srcImgLog = '/assets/erros.png';
               this.messages.callMsg(items.message!, this.boxmessageColor, this.srcImgLog);
+
+              setTimeout(() => {
+                this.messages.close();
+              }, 2000)
+
               this.listChvNelCtrc.length = 0;
               this.cteNfe.length = 0;
             }
           }
-      })
+        })
+      }
     }
   }
+
+
+
+  deleteXml(chave: string) {
+    //console.log(chave)
+    this.cte.delCtrc(chave).subscribe();
+    this.cteNfe = this.cteNfe.filter((item) => item.chvnel !== chave)
+
+    // this.boxmessageColor = 'red';
+    // this.srcImgLog = '/assets/erro.png';
+    // this.messages.callMsg("Deseja Excluir a Chave?", this.boxmessageColor, this.srcImgLog);
+  }
+
+
 }

@@ -81,6 +81,9 @@ ngOnInit() {
         } else {
           this.showLoading = false;
           this.srcImageLog = "/assets/erro.png";
+          setTimeout(() => {
+            this.message.close();
+          }, 2000)
           this.message.callMsg(items.message!,"red",this.srcImageLog);
           }
         },
@@ -118,12 +121,18 @@ ngOnInit() {
           this.boxmessageColor = "green";
           this.srcImageLog = "/assets/check.png";
           this.message.callMsg(retString, this.boxmessageColor, this.srcImageLog);
+          setTimeout(() => {
+            this.message.close();
+          }, 2000)
         }
         if (items.message!) {
           let retString = items.message!;
           this.boxmessageColor = "red";
           this.srcImageLog = "/assets/erro.png";
           this.message.callMsg(retString, this.boxmessageColor, this.srcImageLog);
+          setTimeout(() => {
+            this.message.close();
+          }, 2000)
         }
         this.showLoading = false;
         this.fretesList = this.fretesList.filter(

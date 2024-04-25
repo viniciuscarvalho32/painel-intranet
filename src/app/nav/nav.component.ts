@@ -13,6 +13,8 @@ import { AuthService } from '../auth.service';
 export class NavComponent {
   submenu: boolean = false;
   navbarfixed: boolean = false;
+  public emailSess: any;
+  public id: string = '';
 
   constructor(
     private router: Router,
@@ -20,7 +22,13 @@ export class NavComponent {
 
   }
   ngOnInit() {
+    this.emailSess = sessionStorage.getItem("email");
+    //this.id = sessionStorage.getItem("id");
+  }
 
+  shouldShowNav(): boolean {
+    // Verifica se a rota atual não é a rota de login
+    return this.router.url !== '/login';
   }
 
   @HostListener('window:scroll',['$event']) onscroll() {

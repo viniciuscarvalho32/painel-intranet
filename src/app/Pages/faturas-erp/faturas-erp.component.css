@@ -2,6 +2,7 @@
   display: flex;
   background-color: #ececec;
   min-width: 600px;
+  justify-content: center;
 }
 .comppai {
   background-color: rgb(227, 226, 228);
@@ -13,6 +14,12 @@ table {
 .tabfat {
   display: flex;
   justify-content: center;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: rgb(253, 251, 251);
+  box-shadow: 3px 8px 10px rgba(182, 182, 182, 0.678);
+  border-radius: 5px;
+  width: 1000px;
 }
 .tabfat th {
   border-bottom: 1px solid #ececec;
@@ -24,11 +31,11 @@ table {
   width: 500px;
   border-bottom: 1px solid #ececec;
 }
-tbody tr:hover {
+.tabfat tr:hover {
   background-color: #afaeae;
-  cursor: pointer;
   transition: 0.5s;
   font-weight: bolder;
+  cursor: pointer;
 }
 #idfat, #idcmp, #idvlr, #idsta {
   text-align: center;
@@ -51,4 +58,14 @@ tbody tr:hover {
   width: 100vw;
   z-index: 10;
 } */
-
+#delchv img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+#email {
+  width: 30px;
+  height: 30px;
+  margin-top: 15px;
+  cursor: pointer;
+}

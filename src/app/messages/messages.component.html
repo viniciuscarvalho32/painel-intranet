@@ -1,4 +1,5 @@
 <div class="message-area" *ngIf="messagesService.message">
+  <!-- *ngIf="!messagesService.message" -->
     <div [ngClass]="messagesService.boxmessageColor">
       <div class="imglog">
         <img ngSrc="{{messagesService.srcImageLog}}" width="80" height="80">

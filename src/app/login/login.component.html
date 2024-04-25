@@ -1,41 +1,41 @@
-<!--
-<mat-toolbar color="primary">
-  <span>My App</span>
-  <button mat-icon-button (click)="toggleSidenav()">
-    <mat-icon>menu</mat-icon>
-  </button>
-</mat-toolbar>
-
-<mat-sidenav-container>
-  <mat-sidenav #sidenav mode="over">
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </mat-sidenav>
-
-  <mat-sidenav-content>
-
-  </mat-sidenav-content>
--->
 <div class="login-container">
-  <form (ngSubmit)="fazerLogin()" #loginForm="ngForm">
+
+  <div *ngIf="showLoading">
+    <div class="loadingarea">
+      <mat-spinner class="loading"></mat-spinner>
+    </div>
+    <div class="overlay"></div>
+  </div>
+
+  <form [formGroup]="formAuthUser" (ngSubmit)="fazerLogin()" #loginForm="ngForm">
     <img src="/assets/logomacromaq.png">
     <mat-form-field appearance="fill">
       <mat-label>Usuário</mat-label>
-      <input matInput type="text" name="username" [(ngModel)]="usuario.email">
+      <input matInput type="text" name="email" [(ngModel)]="usuario.email" formControlName="email" required>
+      <div *ngIf="loginForm.submitted" class="validErr">
+        <p *ngIf="email.errors?.['required']">
+          Usuário não pode ficar em branco
+        </p>
+      </div>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Senha</mat-label>
-      <input matInput type="password" name="password" [(ngModel)]="usuario.password">
+      <input matInput type="password" name="password" [(ngModel)]="usuario.password" formControlName="password" required>
+      <div *ngIf="loginForm.submitted" class="validErr">
+        <p *ngIf="password.errors?.['required']">
+          Senha não pode ficar em branco
+        </p>
+      </div>
     </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.form.valid">Acessar</button>
+    <!-- <div class="btnsignup"> -->
+    <button mat-raised-button color="primary" type="submit" (click)="signup()"> Criar Usuário</button>
+    <!-- </div> -->
+
+    <button mat-raised-button color="primary" type="submit" >Acessar</button> <!-- [disabled]="!loginForm.form.valid"-->
     <div class="error-msg" *ngIf="invalidLogin">Usuário ou Senha inválido</div>
-    <button mat-raised-button color="primary" [disabled]="!loginForm.form.valid" disabled="true">Cadastrar</button>
+    <!-- <button mat-raised-button color="primary" [disabled]="!loginForm.form.valid" disabled="true">Cadastrar</button> -->
     <div *ngIf="showLoading">
       <div class="loadingarea">
         <mat-spinner class="loading"></mat-spinner>
@@ -44,4 +44,5 @@
     </div>
   </form>
 </div>
+
 

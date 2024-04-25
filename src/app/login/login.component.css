@@ -11,9 +11,11 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   border-radius: 5px;
   margin: 0 auto;
   height: 100%;
+  background-color: rgb(253, 251, 251);
 }
 form {
   display: flex;
@@ -22,8 +24,9 @@ form {
   border-radius: 5px;
   border: 1px solid rgb(231, 231, 231);
   padding: 1px 50px 5px 50px;
-  height: 450px;
+  height: 500px;
   background-color: #ffffff;
+  box-shadow: 3px 8px 10px rgba(187, 187, 187, 0.697);
 }
 
 label {

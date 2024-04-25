@@ -1,8 +1,9 @@
 <div class="formfile">
   <form (ngSubmit)="submit()" [formGroup]="formFile" formDir="ngForm">
     <div class="btnselectfile">
-      <label for="arquivo">Importar Arquivo</label>
-      <input type="file" id="arquivo" name="arquivo" (change)="onFileSelected($event)">
+      <label for="arquivo">Importar Arquivo
+        <input type="file" id="arquivo" name="arquivo" (change)="onFileSelected($event)">
+      </label>
     </div>
     <span *ngIf="fileName"> Nome do Arquivo: {{fileName}}</span>
     <div class="btnsendfile" *ngIf="fileSelected">

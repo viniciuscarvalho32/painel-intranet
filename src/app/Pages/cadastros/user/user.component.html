@@ -1,15 +1,25 @@
-<form (ngSubmit)="onSubmit()">
-  <mat-form-field>
-    <input matInput placeholder="Email" [(ngModel)]="dadosUsurio.email" name="email" required>
-  </mat-form-field>
 
-  <mat-form-field>
-    <input matInput type="password" placeholder="Password" [(ngModel)]="dadosUsurio.password" name="password" required>
-  </mat-form-field>
+<div class="container">
+  <span>Cadastro de Usuário</span>
+  <div class="formarea">
+    <form [formGroup]="signup" (ngSubmit)="onSubmit()" #signupForm="ngForm">
+      <mat-form-field>
+        <input matInput placeholder="Nome" [(ngModel)]="dadosUsurio.name" name="name" formControlName="name"  required>
+      </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Name" [(ngModel)]="dadosUsurio.name" name="name" required>
-  </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Email" [(ngModel)]="dadosUsurio.email" name="email" formControlName="email" required>
+      </mat-form-field>
 
-  <button mat-raised-button color="primary" type="submit">Save</button>
-</form>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Senha" [(ngModel)]="dadosUsurio.password" name="password" formControlName="password" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="password" placeholder="Confirmar Senha" [(ngModel)]="dadosUsurio.checkpassword" name="checkpassword" formControlName="checkpassword" required>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" id="btnsave">Salvar</button>
+    </form>
+  </div>
+</div>

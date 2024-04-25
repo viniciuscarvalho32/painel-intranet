@@ -1,11 +1,15 @@
-<nav class="navigate" (scroll)="onscroll()" [ngClass]="navbarfixed?'fixed':'nofixed'">
+<nav *ngIf="shouldShowNav()" class="navigate" (scroll)="onscroll()" [ngClass]="navbarfixed?'fixed':'nofixed'">
   <div class="logonav">
     <div class="logomacro">
       <a routerLink="/home"><img src="/assets/logomacromaq.png"></a>
     </div>
   </div>
-
   <div class="menunav">
+
+    <!-- <div class="btnfat">
+      <button mat-button><a routerLink="/api/protegida">Protegida</a></button>
+    </div> -->
+
     <div class="btnfat">
       <button mat-button [matMenuTriggerFor]="fatura">Faturas</button>
       <mat-menu #fatura="matMenu" xPosition="after">
@@ -20,7 +24,14 @@
         <button mat-menu-item><a routerLink="/erp/cte">CTRC Emissão</a></button>
       </mat-menu>
     </div>
+    <div class="btnBi">
+      <button mat-button><a routerLink="/powerbi">Power BI</a></button>
+    </div>
+    <!-- <div>
+      {{emailSess}}
+    </div> -->
   </div>
+
   <div id="imglogoff" (click)="fazerLogOff()"><img src="assets/logoff.png"></div>
 
   <!-- <div class="modulos">

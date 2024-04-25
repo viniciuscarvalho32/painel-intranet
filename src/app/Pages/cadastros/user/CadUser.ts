@@ -1,5 +1,6 @@
 export class CadUser {
+  name: string = '';
   email: string = '';
   password: string = '';
-  name: string = '';
+  checkpassword: string = '';
 }

@@ -1,13 +1,15 @@
+<!-- <app-nav></app-nav> -->
 <div class="formfile">
   <app-form-file-fat (onSubmit)="createHandler($event)"></app-form-file-fat>
 </div>
-<section class="secfaterp">
+
   <div *ngIf="showLoading">
     <div class="loadingarea">
       <mat-spinner class="loading"></mat-spinner>
     </div>
     <div class="overlay"></div>
   </div>
+  <section class="secfaterp" *ngIf="faturas.length > 0">
   <div class="tabfat">
 
     <!--
@@ -62,12 +64,13 @@
     </table>
   -->
    <table>
-    <thead *ngIf="faturas.length > 0">
+    <thead>
       <tr>
         <th>Fatura</th>
         <th>Competência</th>
         <th>Valor</th>
         <th>Status</th>
+        <th></th>
       </tr>
     </thead>
     <tbody *ngFor="let fat of faturas">
@@ -76,8 +79,17 @@
         <td id="idcmp">{{fat.cmpemi}}</td>
         <td id="idvlr">R$&nbsp;&nbsp;&nbsp;&nbsp;{{fat.vlrfat}}</td>
         <td id="idsta">{{fat.stafat}}</td>
+        <!-- <td id="email" a [routerLink]="['/erp/faturas-erp/fatura/', fat.numfat]"><img src="/assets/email.png"></td> -->
+        <!-- <td id="delchv" (click)="deleteFile(fat.numfat)"><img src="/assets/delete.png" *ngIf="!fat.stafat"></td> -->
       </tr>
     </tbody>
+    <div class="paginator" *ngIf="faturas.length > 0">
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                  showFirstLastButtons
+                  [length]="faturas.length"
+                  aria-label="Select page">
+      </mat-paginator>
+    </div>
   </table>
   </div>
 </section>

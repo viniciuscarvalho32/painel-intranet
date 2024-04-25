@@ -134,6 +134,10 @@ span {
 }
 .tabcte {
   margin-top: 2rem;
+  padding: 10px;
+  background-color: rgb(253, 251, 251);
+  box-shadow: 3px 8px 10px rgba(182, 182, 182, 0.678);
+  border-radius: 5px;
 }
 .tabchave {
   display: flex;
@@ -141,7 +145,7 @@ span {
   margin-top: 2rem;
 }
 thead th {
-  background-color:rgb(220, 220, 220);
+  background-color:rgb(186, 186, 186);
   padding: .5rem 1rem .5rem 1rem;
   border-radius: .3rem;
   text-align: center;
@@ -149,7 +153,7 @@ thead th {
 .tabchave td {
   border-bottom: 1px solid rgb(230, 230, 230);
 }
-#idsel input {
+#idsel input, #iddoc input {
   width: 50px;
   height: 20px;
   cursor: pointer;
@@ -173,12 +177,53 @@ thead th {
   border: none;
   border-radius: .3rem;
 }
+.docanterior {
+  padding: 10px;
+  background-color: rgb(253, 251, 251);
+  box-shadow: 3px 8px 10px rgba(182, 182, 182, 0.678);
+  border-radius: 5px;
+}
 .tipser select {
   padding: .5rem;
   border-radius: .3rem;
 }
 mat-form-field {
   width: 300px;
+}
+.imgbtn img {
+  width: 1.5rem;
+  cursor: pointer;
+}
+.docant {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  margin-top: 5px;
+}
+.txtdocant {
+  margin-left: 5px;
+}
+#delchv img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.btnload {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+#btnload {
+  background-color: rgb(245, 245, 245);
+  padding: .4rem;
+  border-radius: 5px;
+  border: 1px solid rgb(189, 189, 189);
+  cursor: pointer;
+}
+#btnload:hover {
+  background-color: cornflowerblue;
+  color: white;
+  border: none;
 }
 
 

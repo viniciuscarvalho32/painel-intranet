@@ -8,6 +8,8 @@ import { FaturasService } from 'src/app/faturas.service';
 import { MessagesService } from 'src/app/messages.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { RateioCcComponent } from '../rateio-cc/rateio-cc.component';
+import { RelatorioRateioComponent } from '../relatorio-rateio/relatorio-rateio.component';
+import { DetailEmail } from 'src/app/DetailEmail';
 
 @Component({
   selector: 'app-fatura-erp-rateio',
@@ -23,11 +25,14 @@ export class FaturaErpRateioComponent {
   valRat: any;
   totalFat: any;
   faturaForm!: FormGroup;
+  formEmail!: FormGroup;
+
   statusFat: any;
   showLoading: boolean = false;
   msgRet?: string = "";
   numFatura: string = "";
   initialValue = 0;
+  ratColabDetail: [] = [];
   public ccuDetails: CcuDetails[] = [];
   public boxmessageColor: string = '';
   public srcImageLog: string = '';
@@ -44,6 +49,11 @@ export class FaturaErpRateioComponent {
   ngOnInit() {
     this.faturaForm = new FormGroup({
        numfat: new FormControl()
+    })
+
+    this.formEmail = new FormGroup({
+      // fatura: new FormControl(),
+      email: new FormControl()
     })
 
     this.numFatura = this.route.snapshot.params['fat'];
@@ -66,6 +76,9 @@ export class FaturaErpRateioComponent {
               this.boxmessageColor = 'green';
               this.srcImageLog = "/assets/check.png";
               this.messagesService.callMsg('Rateio já foi atualizado!', this.boxmessageColor, this.srcImageLog);
+              setTimeout(() => {
+                this.messagesService.close();
+              }, 2000)
            }
         });
       }
@@ -78,16 +91,23 @@ export class FaturaErpRateioComponent {
           this.boxmessageColor = 'green';
           this.srcImageLog = '/assets/check.png';
           this.messagesService.callMsg(this.msgRet, this.boxmessageColor, this.srcImageLog);
+          setTimeout(() => {
+            this.messagesService.close();
+          }, 2000)
           this.router.navigate(['/'])
       }
     })
   }
 
-  /*
-  get numFat() {
-    return this.faturaForm.get('numfat')!;
+
+  // get fatura() {
+  //   return this.formEmail.get('fatura')!;
+  // }
+  get email() {
+    return this.formEmail.get('email')!;
   }
-  */
+
+
  /*
   async onSubmit() {
     this.showLoading = true;
@@ -133,21 +153,60 @@ export class FaturaErpRateioComponent {
         this.boxmessageColor = 'green';
         this.srcImageLog = '/assets/check.png';
         this.messagesService.callMsg('Rateio Atualizado Com Sucesso!', this.boxmessageColor, this.srcImageLog);
+        setTimeout(() => {
+          this.messagesService.close();
+        }, 2000)
         this.router.navigate(['/erp/faturas-erp'])
       }
     });
   }
+  async submit() {
+    this.numFatura = this.route.snapshot.params['fat'];
+    this.showLoading = true;
+    let paramGetEmail = this.formEmail.value.email;
 
-  async showRateioDetails(fatura: string, codCcu: string) {
+    const paramGetFatura: DetailEmail = {
+      numFat: this.numFatura,
+      email: paramGetEmail
+    }
 
-    await this.ccuDetailsServices.showDetails(fatura, codCcu).subscribe((det) => {
-        this.ccuDetails = det.data;
-        console.log(this.ccuDetails)
-
-        this.dialogRef.open(RateioCcComponent, {
-          //data : [{numcad: 103623, nomfun: 'Vinicius', perrat: 100, vlrrat: 234.90}]
-          data : this.ccuDetails
-        })
+    await this.ccuDetailsServices.getRateioColaborador(paramGetFatura).subscribe({
+      next: (ratDetail) => {
+        if (ratDetail.message) {
+            this.showLoading = false;
+            this.boxmessageColor = 'green';
+            this.srcImageLog = '/assets/check.png';
+            this.messagesService.callMsg(ratDetail.message, this.boxmessageColor, this.srcImageLog);
+            setTimeout(() => {
+              this.messagesService.close();
+            }, 2000)
+        }
+      }
     })
+
+
   }
+
+  // async showRateioDetails(fatura: string, codCcu: string) {
+
+  //   await this.ccuDetailsServices.showDetails(fatura, codCcu).subscribe((det) => {
+  //       this.ccuDetails = det.data;
+  //       //console.log(this.ccuDetails)
+
+  //       this.dialogRef.open(RateioCcComponent, {
+  //         //data : [{numcad: 103623, nomfun: 'Vinicius', perrat: 100, vlrrat: 234.90}]
+  //         data : this.ccuDetails
+  //       })
+  //   })
+  // }
+  // async gerRelatorio(nFatura: string) {
+  //   // await this.ccuDetailsServices.showDetails(nFatura,'').subscribe((detFatura: { data: any; }) => {
+  //   //   this.ccuDetails = detFatura.data;
+  //     await this.dialogRef.open(RelatorioRateioComponent, {
+  //       data : [{numcad: 103623, nomfun: 'Vinicius', perrat: 100, vlrrat: 234.90}]
+  //       //data : this.ccuDetails
+  //     })
+  //   //})
+  // }
+
 }

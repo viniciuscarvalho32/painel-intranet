@@ -1,5 +1,5 @@
 import { AuthService } from './auth.service';
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { FaturasService } from './faturas.service';
 import { MessagesService } from './messages.service';
 import { CcudetailsService } from './ccudetails.service';
@@ -14,7 +14,6 @@ import { RateioCcComponent } from './Pages/rateio-cc/rateio-cc.component';
 export class AppComponent {
   title = 'intranet';
   mostrarMenu: boolean = false;
-
   constructor(
     public faturas: FaturasService,
     public messagesService: MessagesService,
