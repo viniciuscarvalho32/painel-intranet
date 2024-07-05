@@ -1,3 +1,8 @@
 <p>Rota Protegida</p>
 
 <button (click)="acessarRota()">Acessar</button>
+
+<div *ngFor="let user of userData">
+  <h1> Nome Usuário: {{user.name}}</h1>
+  <h1> Nome Usuário: {{user.email}}</h1>
+</div>

@@ -13,6 +13,7 @@ import { NavComponent } from './nav/nav.component';
 import { CteComponent } from './Pages/cte/cte.component';
 import { RateioCcComponent } from './Pages/rateio-cc/rateio-cc.component';
 import { ProtectedComponent } from './Pages/protected/protected.component';
+import { SchenkerComponent } from './Pages/schenker/schenker.component';
 
 const routes: Routes = [
   {path: 'hcm/faturas', component: FaturasComponent},
@@ -27,7 +28,8 @@ const routes: Routes = [
   {path: 'sign-up', component: UserComponent},
   {path: 'erp/cte', component: CteComponent},
   {path: 'powerbi', component: PowerBiComponent},
-  {path: 'api/protegida', component: ProtectedComponent}
+  {path: 'api/protegida', component: ProtectedComponent},
+  {path: 'schenker', component: SchenkerComponent}
 ];
 
 @NgModule({

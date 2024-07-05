@@ -51,12 +51,13 @@ export class HcmComponent {
       numFat: this.numFatura,
       type: "planosaude"
     }
+    //console.log(paramGetRateio)
+
     this.faturas.getRateio(paramGetRateio).subscribe({
-
       next: (items) => {
-
+        console.log(`Retorno Rateio: ${items.data}`)
         const rat = items.data;
-        if (items.data) {
+        if (rat) {
             this.showLoading = false;
             this.statusFat = rat.filter((sta => sta.status == "A"));
             rat.filter((sta) => {
@@ -69,8 +70,9 @@ export class HcmComponent {
                   }, 2000)
                 }
             });
+            this.rateios = rat;
         }
-        this.rateios = rat;
+
 
         if (items.message) {
           this.msgRet = items.message;
@@ -80,7 +82,7 @@ export class HcmComponent {
           setTimeout(() => {
             this.messagesService.close();
           }, 2000)
-          this.router.navigate(['/'])
+          this.router.navigate(['/hcm/faturas'])
         }
       }
     })

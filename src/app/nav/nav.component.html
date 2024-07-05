@@ -25,7 +25,11 @@
       </mat-menu>
     </div>
     <div class="btnBi">
-      <button mat-button><a routerLink="/powerbi">Power BI</a></button>
+      <button mat-button [matMenuTriggerFor]="bi">BI</button>
+      <mat-menu #bi="matMenu" xPosition="after">
+        <button mat-button><a routerLink="/powerbi">Power BI</a></button>
+        <button mat-button><a routerLink="/schenker">Schenker</a></button>
+    </mat-menu>
     </div>
     <!-- <div>
       {{emailSess}}

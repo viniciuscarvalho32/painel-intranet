@@ -15,6 +15,7 @@ export class UserComponent {
 
   dadosUsurio: CadUser = new CadUser();
   signup: FormGroup;
+  public showLoading: boolean = false;
 
   constructor(
     private auth: AuthService,
@@ -45,13 +46,15 @@ export class UserComponent {
 
 
   async onSubmit() {
-    //console.log(this.signup)
+    this.showLoading = true;
     await this.auth.signUpUser(this.signup.value).subscribe({
       next: (auth) => {
+      this.showLoading = false;
       //const authUser = JSON.stringify(auth)
       //console.log(authUser)
         if (auth.msg) {
           this.message.callMsg(auth.msg,'green','assets/check.png');
+
           this.router.navigate(['/login']);
         }
       }

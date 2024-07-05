@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { ActivatedRoute, Router, createUrlTreeFromSnapshot } from '@angular/router';
 import { Subject } from 'rxjs';
 import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+import { FatAuth } from 'src/app/FatAuth';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -92,9 +93,17 @@ export class FaturasErpComponent {
   }
 
   ngOnInit() {
+    let token = sessionStorage.getItem('token')!;
+    let uuID = sessionStorage.getItem('uuID')!;
+
     this.showLoading = true;
     const type: string = "combustivel";
-    this.faturaService.getFaturas(type).subscribe({
+    const dataFatAba: FatAuth = {
+      type,
+      token,
+      uuID
+    }
+    this.faturaService.getFaturas(dataFatAba).subscribe({
       next: (items) => {
         this.faturas = items.data
         this.showLoading = false;
@@ -121,7 +130,7 @@ export class FaturasErpComponent {
             this.router.navigate(['/erp/faturas-erp']);
             setTimeout(() => {
               this.messages.close();
-            }, 2000)
+            }, 5000)
         } else {
             //console.log(items.message)
             this.showLoading = false;
@@ -131,7 +140,7 @@ export class FaturasErpComponent {
             this.router.navigate(['/erp/faturas-erp']);
             setTimeout(() => {
                this.messages.close();
-            }, 5000)
+            },10000)
         }
       }
     })

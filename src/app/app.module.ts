@@ -14,6 +14,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MessagesComponent } from './messages/messages.component';
 import { FaturasComponent } from './Pages/h-c-m/faturas/faturas.component';
 import { FretesErpComponent } from './Pages/fretes-erp/fretes-erp.component';
@@ -37,6 +38,7 @@ import { FormDocantComponent } from './form-docant/form-docant.component';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import { RelatorioRateioComponent } from './Pages/relatorio-rateio/relatorio-rateio.component';
 import { ProtectedComponent } from './Pages/protected/protected.component';
+import { SchenkerComponent } from './Pages/schenker/schenker.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,8 @@ import { ProtectedComponent } from './Pages/protected/protected.component';
     FormDocantComponent,
     PowerBiComponent,
     RelatorioRateioComponent,
-    ProtectedComponent
+    ProtectedComponent,
+    SchenkerComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +84,7 @@ import { ProtectedComponent } from './Pages/protected/protected.component';
     MatDialogModule,
     MatSelectModule,
     MatPaginatorModule,
-
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

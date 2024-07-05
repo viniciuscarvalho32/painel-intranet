@@ -37,6 +37,14 @@
   <form (ngSubmit)="onSubmit($event)">
     <div class="docanterior" *ngIf="cteNfe.length > 0">
     <div class="tipser" *ngIf="cteNfe.length > 0">
+
+      <!-- <select name="tipser" class="tipser">
+        <option class="tipcteitem" *ngFor="let type of types" [value]="type.id">{{type.viewValue}}</option>
+        <mat-option [value]="0">0-Cte Normal</mat-option>
+        <mat-option [value]="1" selected="selected">1- CTe De Complemento de Valores</mat-option>
+        <mat-option [value]="2">2- Cte Substituto</mat-option>
+      </select> -->
+
       <!-- <mat-form-field> -->
       <!-- <mat-label>Tipo de Frete</mat-label> -->
       <select name="tipser" class="tipser">
@@ -57,6 +65,7 @@
       </mat-form-field> -->
       <!-- </mat-form-field> -->
     </div>
+
     <div class="docant" *ngIf="cteNfe.length > 0">
 
       <div class="imgbtn" (click)="addFormDocAnt()">

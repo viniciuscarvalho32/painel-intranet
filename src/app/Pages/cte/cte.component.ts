@@ -56,9 +56,9 @@ export class CteComponent {
             this.cteNfe = items.data;
             this.boxmessageColor = 'green';
             this.srcImgLog = '/assets/check.png';
-            setTimeout(() => {
-              this.messages.close();
-            }, 3000)
+            // setTimeout(() => {
+            //   this.messages.close();
+            // }, 3000)
             //this.messages.callMsg(items.message!, this.boxmessageColor)
             //this.messages.callMsg("Chave relacionada com sucesso!", this.boxmessageColor, this.srcImgLog);
             //this.router.navigate(['/erp/faturas-erp'])
@@ -112,9 +112,9 @@ export class CteComponent {
             this.boxmessageColor = 'red';
             this.srcImgLog = '/assets/erros.png';
             this.messages.callMsg(items.message, this.boxmessageColor, this.srcImgLog);
-            setTimeout(() => {
-              this.messages.close();
-            }, 3000)
+            // setTimeout(() => {
+            //   this.messages.close();
+            // }, 3000)
             //this.router.navigate(['/erp/faturas-erp'])
         }
         formData.delete;
@@ -217,9 +217,9 @@ export class CteComponent {
               this.srcImgLog = '/assets/erros.png';
               this.messages.callMsg(items.message!, this.boxmessageColor, this.srcImgLog);
 
-              setTimeout(() => {
-                this.messages.close();
-              }, 2000)
+              // setTimeout(() => {
+              //   this.messages.close();
+              // }, 2000)
 
               this.listChvNelCtrc.length = 0;
               this.cteNfe.length = 0;

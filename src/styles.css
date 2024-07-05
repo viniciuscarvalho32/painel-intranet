@@ -2,7 +2,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%;}
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: rgb(215, 215, 215);}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #f8f8f8;}
 
 .loadingarea {
   display: flex;
@@ -14,7 +14,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
   z-index: 11;
 }
 .overlay {
-  background: #000;
+  background: #070707;
   height: 100vh;
   left: 0;
   opacity: 0.5;
@@ -26,3 +26,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
 .mat-progress-spinner circle, .mat-spinner circle {
   stroke: #f5e42d;
   }
+

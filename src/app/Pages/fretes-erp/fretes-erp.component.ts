@@ -19,6 +19,7 @@ export class FretesErpComponent {
   public codfilial: number = 0;
   public boxmessageColor: string = "";
   public srcImageLog: string = "";
+  public token: any = "";
 
   constructor(
     private fretes: FretesService,
@@ -40,10 +41,21 @@ ngOnInit() {
 
   async carregarFretes() {
     this.showLoading = true;
-    await this.fretes.getFretes().subscribe({
+    this.token = sessionStorage.getItem('token')
+    await this.fretes.getFretes(this.token).subscribe({
       next: (items) => {
-        this.fretesList = items.data;
-        this.showLoading = false;
+        console.log(items.message)
+        if (items.data) {
+            this.fretesList = items.data;
+            this.showLoading = false;
+        } else {
+          this.showLoading = false;
+          this.srcImageLog = "/assets/erro.png";
+          setTimeout(() => {
+            this.message.close();
+          }, 5000)
+          this.message.callMsg(items.message!,"red",this.srcImageLog);
+        }
       },
     });
   }

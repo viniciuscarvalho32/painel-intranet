@@ -6,6 +6,11 @@
     </div>
     <div class="overlay"></div>
   </div>
+  <!-- <div *ngIf="showProgBar">
+    <div class="progressarea">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+  </div> -->
 
   <form [formGroup]="formAuthUser" (ngSubmit)="fazerLogin()" #loginForm="ngForm">
     <img src="/assets/logomacromaq.png">
@@ -29,18 +34,12 @@
       </div>
     </mat-form-field>
 
-    <!-- <div class="btnsignup"> -->
-    <button mat-raised-button color="primary" type="submit" (click)="signup()"> Criar Usuário</button>
-    <!-- </div> -->
-
-    <button mat-raised-button color="primary" type="submit" >Acessar</button> <!-- [disabled]="!loginForm.form.valid"-->
+    <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.form.valid">Acessar</button>
     <div class="error-msg" *ngIf="invalidLogin">Usuário ou Senha inválido</div>
     <!-- <button mat-raised-button color="primary" [disabled]="!loginForm.form.valid" disabled="true">Cadastrar</button> -->
-    <div *ngIf="showLoading">
-      <div class="loadingarea">
-        <mat-spinner class="loading"></mat-spinner>
-      </div>
-      <div class="overlay"></div>
+    <div class="btnsignup">
+      <h3 (click)="signup()">Criar usuário</h3>
+    <!-- <button mat-raised-button color="primary" type="submit" (click)="signup()"> Criar Usuário</button> -->
     </div>
   </form>
 </div>

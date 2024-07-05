@@ -17,6 +17,7 @@ export class LoginComponent {
   invalidLogin = false;
   public usuario: User = new User();
   public showLoading: boolean = false;
+  // public showProgBar: boolean = true;
   formAuthUser: FormGroup;
   //formCreateUser: FormGroup;
 
@@ -55,41 +56,29 @@ export class LoginComponent {
 
   async fazerLogin() {
     this.showLoading = true;
-    this.router.navigate(['home'])
+    setTimeout(() => {
+      this.showLoading = false;
+      this.router.navigate(['/home'])
+    }, 3000)
 
-    // await this.authService.authUser(this.formAuthUser.value).subscribe((retornoLogin) => {
-    //   this.showLoading = false;
-    //   const token = retornoLogin.token
-    //   console.log(token)
-    //   localStorage.setItem('token', token)
-    //       //const emailBD = retornoLogin.map((user: User) => user.email)
-    //       /*
-    //       console.log(`Usuando Banco depois do Map: ${emailBD}`)
-    //       // console.log(`Usuando Front: ${this.formAuthUser.value.email}`)
-    //       //if (emailBD) {
-    //         if (emailBD == this.formAuthUser.value.email) {
-    //           //this.userAuthenticatedSent = emailBD;
-    //           sessionStorage.setItem("email", emailBD)
-    //           this.showLoading = false;
-    //           //this.message.callMsg('Usuário autenticado','green','assets/check.png')
-    //           setTimeout(() => {
-    //             this.message.close();
-    //           }, 1000)
-    //           this.router.navigate(['home'])
-    //         } else {
-    //           this.showLoading = false;
-    //           this.message.callMsg('E-mail ou senha, inválidos','red','assets/erros.png')
-    //           setTimeout(() => {
-    //             this.message.close();
-    //           }, 2000)
-    //         }
-    //         */
-    //     //}
-    //     this.router.navigate(['home'])
+
+    // await this.authService.authUser(this.formAuthUser.value).subscribe({
+    //   next: (retLogin) => {
+    //     this.showLoading = false;
+    //     if (retLogin) {
+    //       const token = retLogin.token
+    //       sessionStorage.setItem('token', token)
+    //       sessionStorage.setItem('uuID', retLogin.uuID)
+    //       this.router.navigate(['/home'])
+    //     } else {
+    //       this.showLoading = false;
+    //       this.message.callMsg(retLogin.error.msg,'red','assets/erro.png')
+    //     }
+    //   }
     // })
-    //this.showLoading = false;
   }
   signup() {
+
     this.router.navigate(['sign-up'])
   }
 }

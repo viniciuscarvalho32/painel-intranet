@@ -6,6 +6,7 @@ import { Response } from './Response';
 import { Rateio } from './Rateio';
 import { SetFatura } from './SetFatura';
 import { Faturas } from './Faturas';
+import { FatAuth } from './FatAuth';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +18,7 @@ export class FaturasService {
   constructor(private http: HttpClient) {
   }
   getRateio(nFatura: any): Observable<Response<Rateio[]>> {
-
     const { numFat, type } = nFatura;
-    //console.log(numFat, type)
     switch(type) {
       case 'planosaude':
         this.urlHttp = `${this.urlFatura}/hcm/faturas`;
@@ -28,7 +27,6 @@ export class FaturasService {
         this.urlHttp = `${this.urlFatura}/erp/faturas-erp`;
     }
     return this.http.get<Response<Rateio[]>>(`${this.urlHttp}/fatura/${numFat}`);
-
   }
 
   // Atualizara o rateio das faturas de Plano de Saude e de Abastecimento
@@ -46,8 +44,8 @@ export class FaturasService {
       return this.http.post<Response<Rateio[]>>(this.urlHttp, rateio);
   }
 
-  getFaturas(type: string): Observable<Response<Faturas[]>> {
-    switch(type) {
+  getFaturas(type: FatAuth): Observable<Response<Faturas[]>> {
+    switch(type.type) {
         case 'planosaude':
           this.urlHttp = `${this.urlFatura}/hcm/faturas`;
           break;
